@@ -1,8 +1,7 @@
 import numpy as np
-import tensorflow as ts
+from src.DataProvider import DataProvider
 
 if __name__ == "__main__":
-    res = np.random.rand(4,4,2)
-    print(res)
+    dp = DataProvider(shit)
 
 
