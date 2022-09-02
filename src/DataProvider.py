@@ -2,8 +2,8 @@ from gc import callbacks
 from typing import Callable
 from sklearn.model_selection import train_test_split
 
-class DataProvider:
 
+class DataProvider:
     def __init__(self, callback: Callable):
         """
         Ctor for the data provider class which prepares testing, validation & training datasets.
