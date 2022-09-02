@@ -4,6 +4,8 @@ import imageio
 import os
 import logging
 
+from tqdm import tqdm
+
 from src.Logger import get_logger
 
 HAM10000_METADATA = "HAM10000_metadata.csv"
@@ -14,6 +16,10 @@ HMNIST_IMG_28_28_L = "hmnist_28_28_L.csv"
 HMNIST_IMG_28_28_RGB = "hmnist_28_28_RGB.csv"
 
 
+# TODO-Sahar: move this:
+logger = get_logger("DataUtils")
+logger.setLevel(logging.DEBUG)
+
 def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
     """
     Parse the full_quality_dataset.csv file.
@@ -22,17 +28,20 @@ def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
     :return:
     """
     logger = get_logger("DataUtils")
-    logger.setLevel(logging.DEBUG)  # TODO-Sahar: move this
 
     archive_path = Path(archive_path_str)
     metadata_df = pd.read_csv(archive_path / HAM10000_METADATA)
-    images = []
+    images_paths = []
     for i in range(len(HMNIST_IMG_DIRS_FULL_QUALITY)):
         images_dir = HMNIST_IMG_DIRS_FULL_QUALITY[i]
         for img_name in os.listdir(archive_path / images_dir):
             img_path = archive_path / images_dir / img_name
-            logger.info(f"Loaded image: {img_path}")
-            images.append(imageio.imread_v2(img_path))
+            images_paths.append(img_path)
+
+    images = {}
+    for img_path in tqdm(images_paths):
+        logger.info(f"Loaded image: {img_path}")
+        images[img_path.stem] = imageio.imread_v2(img_path)
     return images, metadata_df
 
 
