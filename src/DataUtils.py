@@ -16,9 +16,6 @@ HMNIST_IMG_28_28_L = "hmnist_28_28_L.csv"
 HMNIST_IMG_28_28_RGB = "hmnist_28_28_RGB.csv"
 
 
-# TODO-Sahar: move this:
-logger = get_logger("DataUtils")
-logger.setLevel(logging.DEBUG)
 
 def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
     """

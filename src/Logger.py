@@ -7,6 +7,9 @@ LOG_FILENAME = 'logs/logging.log'
 # LOG_FORMAT = "[%(levelname)-5s : '%(name)-20s' : %(asctime)20s : %(processName)-10s : %(threadName)-10s : func='%(funcName)-25s'] - %(message)s"
 LOG_FORMAT = "[%(levelname)-5s : '%(name)-20s' : %(asctime)20s] - %(message)s"
 
+# Logger names:
+DATA_UTILS_LOGGER = "DataUtils"
+
 
 @lru_cache
 def get_logger(logger_name):
@@ -24,3 +27,5 @@ def get_logger(logger_name):
     logger.addHandler(handler_stdout)
 
     return logger
+
+
