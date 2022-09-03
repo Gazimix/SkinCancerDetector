@@ -83,8 +83,4 @@ def skin_cancer_detector_parse_dataset_28_28_L(archive_path_str: str):
 def skin_cancer_detector_parse_dataset_28_28_RGB(archive_path_str: str):
     archive_path = Path(archive_path_str)
     path_to_csv = archive_path / HMNIST_IMG_28_28_RGB
-    return extract_image_array_from_path(path_to_csv)
-
-
-def skin_cancer_detector_parse_dataset_(archive_path_str: str):
-    pass
+    return extract_images_from_csv(path_to_csv, 3)
