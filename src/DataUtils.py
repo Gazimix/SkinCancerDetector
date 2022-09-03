@@ -33,7 +33,7 @@ def extract_images_from_csv(path_to_csv: Path, img_channels):
     return images, labels
 
 
-def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
+def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str, n_samples=math.inf):
     """
     Parse the full_quality_dataset.csv file.
 

@@ -1,7 +1,6 @@
 from src.DataProvider import DataProvider
 from src.DataUtils import *
 import matplotlib.pyplot as plt
-import imageio
 
 ARCHIVE_DIR = "archive"
 
