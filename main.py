@@ -5,14 +5,18 @@ import matplotlib.pyplot as plt
 ARCHIVE_DIR = "archive"
 
 
-def plot_2_first_imgs(images):
+def set_loggers_level():
+    get_logger(DATA_UTILS_LOGGER).setLevel(logging.WARN)
+
+
+def plot_2_first_imgs(images, dim=8):
     image = images[0]
-    image = image.reshape([28, 28])
-    plt.imshow(image, cmap='Greys')
+    image = image.reshape([dim, dim])
+    plt.imshow(image)
     plt.show()
     image = images[1]
-    image = image.reshape([28, 28])
-    plt.imshow(image, cmap='Greys')
+    image = image.reshape([dim, dim])
+    plt.imshow(image)
     plt.show()
 
 
@@ -23,6 +27,4 @@ if __name__ == "__main__":
     images, labels = skin_cancer_detector_parse_dataset_28_28_L(ARCHIVE_DIR)
     print(images)
     print(labels)
-    images, labels = skin_cancer_detector_parse_dataset_28_28_RGB("archive")  # TODO-Sahar: del.
-
-
+    plot_2_first_imgs(images, 28)
