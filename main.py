@@ -5,10 +5,6 @@ import matplotlib.pyplot as plt
 ARCHIVE_DIR = "archive"
 
 
-def set_loggers_level():
-    get_logger(DATA_UTILS_LOGGER).setLevel(logging.WARN)
-
-
 def plot_2_first_imgs(images, dim=8):
     image = images[0]
     image = image.reshape([dim, dim])
