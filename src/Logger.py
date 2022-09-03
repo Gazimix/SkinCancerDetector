@@ -29,3 +29,5 @@ def get_logger(logger_name):
     return logger
 
 
+def set_loggers_level():
+    get_logger(DATA_UTILS_LOGGER).setLevel(logging.WARN)
