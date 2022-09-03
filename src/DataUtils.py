@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+import numpy as np
 import imageio
 import os
 import logging
@@ -16,6 +17,14 @@ HMNIST_IMG_28_28_L = "hmnist_28_28_L.csv"
 HMNIST_IMG_28_28_RGB = "hmnist_28_28_RGB.csv"
 
 
+
+def extract_image_array_from_path(path_to_csv : str):
+
+    df = pd.read_csv(path_to_csv)
+    images : np.ndarray = df.to_numpy()[:,:-1]
+    label : np.ndarray = df.to_numpy()[:,-1]
+    return images, label
+    
 
 def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
     """
@@ -43,22 +52,26 @@ def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
     return images, metadata_df
 
 
-def skin_cancer_detector_parse_dataset_8_8_L(archive_path):
+def skin_cancer_detector_parse_dataset_8_8_L(archive_path_str : str):
+    archive_path = Path(archive_path_str)
+    path_to_csv = archive_path / HMNIST_IMG_8_8_L
+    return extract_image_array_from_path(path_to_csv)
+
+
+def skin_cancer_detector_parse_dataset_8_8_RGB(archive_path_str):
     pass
 
 
-def skin_cancer_detector_parse_dataset_8_8_RGB(archive_path):
+def skin_cancer_detector_parse_dataset_28_28_L(archive_path_str : str):
+    archive_path = Path(archive_path_str)
+    path_to_csv = archive_path / HMNIST_IMG_28_28_L
+    return extract_image_array_from_path(path_to_csv)
+
+
+def skin_cancer_detector_parse_dataset_28_28_RGB(archive_path_str : str):
     pass
 
 
-def skin_cancer_detector_parse_dataset_28_28_L(archive_path):
-    pass
-
-
-def skin_cancer_detector_parse_dataset_28_28_RGB(archive_path):
-    pass
-
-
-def skin_cancer_detector_parse_dataset_(archive_path):
+def skin_cancer_detector_parse_dataset_(archive_path_str : str):
     pass
 
