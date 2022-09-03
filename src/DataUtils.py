@@ -37,7 +37,8 @@ def skin_cancer_detector_parse_dataset_full_quality(archive_path_str: str):
 
     images = {}
     for img_path in tqdm(images_paths):
-        logger.info(f"Loaded image: {img_path}")
+        if logger.isEnabledFor(logging.INFO):
+            logger.info(f"Loaded image: {img_path}")
         images[img_path.stem] = imageio.imread_v2(img_path)
     return images, metadata_df
 

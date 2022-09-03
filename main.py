@@ -8,6 +8,7 @@ from src.Logger import get_logger, DATA_UTILS_LOGGER
 def set_loggers_level():
     get_logger(DATA_UTILS_LOGGER).setLevel(logging.WARN)
 
+
 if __name__ == "__main__":
     set_loggers_level()     # Keep this line first.
 
